@@ -38,12 +38,12 @@ describe("Token contract", function() {         // SYNTAX for testing and we can
 
         // Transfer 10 tokens from owner to address1
         await hardhatToken.transfer(address1.address, 10);
-        expect(await hardhatToken.checkBalance(address1.address)).to.equal(10);
+        let address1Balance = await hardhatToken.checkBalance(address1.address);
+        expect(address1Balance.toString()).to.equal('10');          // OR----> expect(address1Balance.toNumber()).to.equal(10);
 
         //transfer 5 tokens from address1 to address2
         await hardhatToken.connect(address1).transfer(address2.address, 5);
-        expect(await hardhatToken.checkBalance(address2.address)).to.equal(5);
+        let address2Balance = await hardhatToken.checkBalance(address2.address);
+        expect(address2Balance.toString()).to.equal('5');            // OR ----> expect(address2Balance.toNumber()).to.equal(5);
     })
 });
-
-
